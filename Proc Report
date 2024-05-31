@@ -3,18 +3,18 @@
 Data test;
 set Sashelp.class;
 run;
-/* Creating Library With the anme of formats  */
+/* Creating Library With the name of formats  */
 libname Formats "/home/u61766157/Proc Formats";
 
 /* Creating Format and Saving in the Formats Library */
 proc format library=Formats;
 Value $Gender "1"="Male" "0"="Female";
 run;
-/* this option helps to read the formts present inthe format library*/
+/* This option helps to read the formats present in the format library*/
 options fmtsearch=(Formats);
 
 
-/* Ods Option to Generate Pdf and rtf files  */
+/* Ods Option to Generate Pdf and RTF files  */
 ods pdf file="/home/u61766157/Outputs/Report.pdf";
 ods rtf file="/home/u61766157/Outputs/Report.rtf";
 /* creating a Report  */
