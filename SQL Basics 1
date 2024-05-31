@@ -1,0 +1,92 @@
+/* For Creation of Datasets  */
+
+/* Method 1 */
+
+proc sql;
+create table Test (Name Char,Age num,Sex Char);
+insert into test
+values ("Rahul",25,"Male")
+values ("Shiva",25,"Male")
+values ("Abhi",26,"Male")
+values ("Nani",24,"Male");
+quit;
+
+/* Method 2 */
+Proc Sql;
+create table Test1(Name Char,Study Char length=30,Source_of_income char length=25);
+insert into test1
+set Name="Rahul",Study="M.Pharmacology",Source_of_income="Salary"
+set Name="Shiva",Study="MBA",Source_of_income="Family Busniness"
+set Name="Abhi",Study="B.Tech(CSE)",Source_of_income="Salary"
+set Name="Nani",Study="Intermediate",Source_of_income="Business";
+quit;
+
+/* Renaming of varaibles  */
+
+proc sql;
+select *,Sex as Gender from work.test;
+quit;
+
+/*  Filtering of Data by using Where Statement and sorting the data by using order by statement */
+
+proc sql;
+select * from work.test
+where age>=24
+order by Name ;
+quit;
+
+proc sql;
+select * from work.test1
+order by Name, Source_of_income;
+quit;
+
+
+
+proc sql;
+select * from work.test1
+having Source_of_income = "Salary"
+order by Name desc;
+quit;
+
+/* Creatinga a new varaible  */
+
+proc sql;
+select *,(Age-4) as Backage from work.test;
+quit;
+
+
+/* Labelling and formatting the variable names  */
+proc sql outobs=2;
+select name label="Full_name",Age format 5.2,Sex as gender from work.test;
+quit;
+
+/*  Creating new variables by conditional statement using case function */
+proc sql;
+select name as Full_name,Sex,age, case 
+when sex="Male" then "M"
+when sex="Female" then "F"
+end as Gender from work.test;
+quit;
+
+/* Creating Summary Stats   */
+
+proc sql;
+create table test as select origin,type,Count(Type) as Total_Typecount, Count(Model) as Total_Model_Count, count(Origin) as Origin_count from sashelp.cars
+group by Origin, type
+order by origin, type;
+quit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
