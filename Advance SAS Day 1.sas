@@ -11,8 +11,8 @@
 	having 
 	order	
  */
-/* menomic ffor Syntax */
-/*Some french Waiters grow health oranges   */
+/* menomic for Syntax */
+/*Some French waiters grow healthy oranges   */
 
 
 proc sql;
@@ -49,7 +49,7 @@ proc sql;
 create table test as select * ,(weight*0.45) as Weightlbs from sashelp.class;
 run;
 
-/*  Creating a New Variables from calaculated varabile */
+/*  Creating a New Variables from calculated variable */
 
 proc sql;
 create table test as select *  ,(Weight*0.45) as Weightlb , Calculated Weightlb+1 as new_weight   from sashelp.class;
